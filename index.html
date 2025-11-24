@@ -2,46 +2,240 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DreamWay Travels - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels - Explore the World</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for a polished look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8faff; /* Light blue-gray background */
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x800/2563eb/ffffff?text=Mountain+Adventure');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 400px;
+        }
+        .card-bg-1 { background-image: url('https://placehold.co/600x400/10b981/ffffff?text=Tokyo+City'); }
+        .card-bg-2 { background-image: url('https://placehold.co/600x400/f59e0b/ffffff?text=Paris+Eiffel'); }
+        .card-bg-3 { background-image: url('https://placehold.co/600x400/ef4444/ffffff?text=Amazon+River'); }
+        .card-bg {
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+        .card-bg:hover {
+            transform: translateY(-5px);
+        }
+        /* Mobile menu toggle behavior */
+        #mobile-menu {
+            display: none;
+        }
+        /* Style for the two-page navigation simulation */
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+    </style>
 </head>
-<body>
-<header>
-    <div class="logo">DreamWay Travels</div>
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="destinations.html">Destinations</a>
-    </nav>
-</header>
+<body class="text-gray-800">
 
-<section class="hero">
-    <div class="hero-text">
-        <h1>Explore the World with DreamWay</h1>
-        <p>Your journey begins here. Discover handpicked destinations and personalized travel packages.</p>
-        <a href="destinations.html" class="btn-primary">View Destinations</a>
-    </div>
-</section>
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-indigo-600 tracking-wide">Wanderlust</a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" onclick="showPage('home')" class="nav-link text-lg text-gray-600 hover:text-indigo-600 transition duration-150 font-semibold">Home</a>
+                <a href="#destinations" onclick="showPage('destinations')" class="nav-link text-lg text-gray-600 hover:text-indigo-600 transition duration-150 font-semibold">Destinations</a>
+                <a href="#" class="nav-link text-lg text-gray-600 hover:text-indigo-600 transition duration-150 font-semibold">About Us</a>
+                <a href="#" class="nav-link text-lg text-gray-600 hover:text-indigo-600 transition duration-150 font-semibold">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition duration-150">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-md">
+            <a href="#home" onclick="showPage('home'); document.getElementById('mobile-menu').style.display='none';" class="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50">Home</a>
+            <a href="#destinations" onclick="showPage('destinations'); document.getElementById('mobile-menu').style.display='none';" class="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50">Destinations</a>
+            <a href="#" class="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50">About Us</a>
+            <a href="#" class="block px-4 py-2 text-base text-gray-600 hover:bg-gray-50">Contact</a>
+        </div>
+    </header>
 
-<section class="features">
-    <h2>Why Travel With Us?</h2>
-    <div class="feature-grid">
-        <div class="feature">
-            <h3>Expert Guides</h3>
-            <p>Our local guides ensure you experience the true culture of each destination.</p>
-        </div>
-        <div class="feature">
-            <h3>Custom Itineraries</h3>
-            <p>Every trip is tailored to your interests, budget, and schedule.</p>
-        </div>
-        <div class="feature">
-            <h3>24/7 Support</h3>
-            <p>We’re with you from takeoff to touchdown and beyond.</p>
-        </div>
-    </div>
-</section>
+    <!-- Page Content Container -->
+    <main class="min-h-screen">
+        
+        <!-- ============================================== -->
+        <!-- HOME PAGE CONTENT -->
+        <!-- ============================================== -->
+        <section id="home" class="page-content active">
+            
+            <!-- Hero Section -->
+            <div class="hero-section flex items-center justify-center text-center">
+                <div class="p-6 md:p-10 rounded-xl bg-black bg-opacity-30 mx-4">
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
+                        Your Next Adventure Starts Here
+                    </h1>
+                    <p class="text-xl md:text-2xl text-indigo-100 mb-8">
+                        Crafting unforgettable travel experiences across the globe.
+                    </p>
+                    <button onclick="showPage('destinations')" class="px-8 py-3 bg-indigo-600 text-white text-lg font-bold rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                        View Packages
+                    </button>
+                </div>
+            </div>
 
-<footer>
-    <p>&copy; 2025 DreamWay Travels. All rights reserved.</p>
-</footer>
+            <!-- Features Section -->
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Why Choose Wanderlust?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 text-center border-t-4 border-indigo-500">
+                        <div class="text-indigo-600 mb-4 inline-block p-3 rounded-full bg-indigo-100">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+                        <p class="text-gray-600">Travel with peace of mind knowing our dedicated team is always there for you, day or night.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 text-center border-t-4 border-teal-500">
+                        <div class="text-teal-600 mb-4 inline-block p-3 rounded-full bg-teal-100">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.006 12.006 0 0012 22a12.006 12.006 0 008.618-15.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Best Price Guarantee</h3>
+                        <p class="text-gray-600">We offer competitive pricing and flexible booking options to suit any budget.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 text-center border-t-4 border-yellow-500">
+                        <div class="text-yellow-600 mb-4 inline-block p-3 rounded-full bg-yellow-100">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 18a.5.5 0 00.75.5h14.5a.5.5 0 00.75-.5l-3-18m0 0l-3 18a.5.5 0 00.75.5h14.5a.5.5 0 00.75-.5l-3-18M13.5 3.5v17a.5.5 0 00.75.5h6a.5.5 0 00.75-.5v-17m-7.5-17.5l-.5 20.5a.5.5 0 00.75.5h5.5a.5.5 0 00.75-.5L18 3.5m-15 0h17.5a.5.5 0 01.5.5v17a.5.5 0 01-.5.5H3.5a.5.5 0 01-.5-.5v-17a.5.5 0 01.5-.5zM12 6h.01M12 10h.01M12 14h.01M12 18h.01"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Curated Itineraries</h3>
+                        <p class="text-gray-600">Our experts hand-pick the best routes, hotels, and activities for a seamless journey.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="bg-indigo-600 mt-16 py-12">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4">Ready to Explore?</h2>
+                    <p class="text-xl text-indigo-200 mb-8">Sign up for our newsletter and get exclusive travel deals delivered straight to your inbox.</p>
+                    <form class="flex justify-center max-w-md mx-auto">
+                        <input type="email" placeholder="Enter your email" class="w-full p-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-white text-gray-900" required>
+                        <button type="submit" class="bg-yellow-400 text-indigo-900 font-bold p-3 rounded-r-lg hover:bg-yellow-300 transition duration-300">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- DESTINATIONS PAGE CONTENT -->
+        <!-- ============================================== -->
+        <section id="destinations" class="page-content">
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-5xl font-extrabold text-center text-indigo-700 mb-4">Our Top Destinations</h2>
+                <p class="text-xl text-center text-gray-600 mb-12">Find your dream vacation among our hand-picked selection of global getaways.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Tokyo -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div class="card-bg card-bg-1 h-60"></div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Vibrant Tokyo, Japan</h3>
+                            <p class="text-gray-600 mb-4">Experience the perfect blend of ancient temples and neon-lit skyscrapers. A city that never sleeps.</p>
+                            <span class="inline-block bg-pink-100 text-pink-800 text-sm font-semibold px-3 py-1 rounded-full mb-3">Culture & Food</span>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xl font-bold text-indigo-600">$1,500 <span class="text-sm font-normal text-gray-500">/ per person</span></p>
+                                <button class="px-4 py-2 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 transition duration-200">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Paris -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div class="card-bg card-bg-2 h-60"></div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Romantic Paris, France</h3>
+                            <p class="text-gray-600 mb-4">The City of Light offers unmatched romance, art, and history. Perfect for couples.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-3">Romance & History</span>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xl font-bold text-indigo-600">$1,200 <span class="text-sm font-normal text-gray-500">/ per person</span></p>
+                                <button class="px-4 py-2 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 transition duration-200">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Amazon -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div class="card-bg card-bg-3 h-60"></div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Wild Amazon, Brazil</h3>
+                            <p class="text-gray-600 mb-4">A nature lover's paradise. Explore the largest rainforest with expert guides.</p>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full mb-3">Adventure & Nature</span>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xl font-bold text-indigo-600">$2,300 <span class="text-sm font-normal text-gray-500">/ per person</span></p>
+                                <button class="px-4 py-2 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 transition duration-200">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary CTA -->
+                <div class="mt-16 text-center">
+                    <p class="text-2xl font-semibold text-gray-700 mb-4">Can't find what you're looking for?</p>
+                    <a href="#" class="inline-block px-6 py-3 border-2 border-indigo-600 text-indigo-600 font-bold rounded-full hover:bg-indigo-50 transition duration-300">
+                        Request a Custom Trip
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg font-semibold mb-4">Wanderlust Travels &copy; 2025</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle the mobile menu toggle
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // JavaScript to simulate the two-page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show the requested page
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+        }
+    </script>
+
 </body>
 </html>
